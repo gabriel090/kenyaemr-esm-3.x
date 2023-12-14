@@ -5,6 +5,25 @@
   },
   "pages": [],
   "extensions": [
-    
+    {
+      "name": "adherence-dashboard-summary",
+      "component": "advancedAdherence",
+      "slot": "patient-chart-adherence-dashboard-slot",
+      "order": 10,
+      "meta": {
+        "columnSpan": 4
+      }
+    },
+    {
+      "name": "adherence-dashboard-link",
+      "component": "advancedAdherenceLink",
+      "order": 11,
+      "meta": {
+        "columns": 1,
+        "columnSpan": 1,
+        "slot": "patient-chart-adherence-dashboard-slot",
+        "path": "Adherence"
+      }
+    }
   ]
 }
