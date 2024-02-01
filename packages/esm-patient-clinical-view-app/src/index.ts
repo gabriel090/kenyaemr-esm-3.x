@@ -10,6 +10,7 @@ import {
   htsDashboardMeta,
   inPatientDashboardMeta,
   familyHistoryDashboardMeta,
+  labourDeliveryDashboardMeta,
 } from './dashboard.meta';
 import DefaulterTracing from './defaulter-tracing/defaulter-tracing.component';
 // import ClinicalEncounter from './clinical-encounter/clinical-enc.component';
@@ -18,6 +19,7 @@ import FamilyHistory from './family-history/family-history.component';
 import './root.scss';
 
 import HivTestingEncountersList from './esm-hts-app/views/hiv-testing/hiv-testing-services.component';
+import Partograph from './labour-delivery/partograph.component';
 const moduleName = '@kenyaemr/esm-patient-clinical-view-app';
 
 const options = {
@@ -33,6 +35,7 @@ export const defaulterTracingLink = getSyncLifecycle(createDashboardLink(default
 export const htsDashboardLink = getSyncLifecycle(createDashboardLink(htsDashboardMeta), options);
 export const inPatientLink = getSyncLifecycle(createDashboardLink(inPatientDashboardMeta), options);
 export const familyHistoryLink = getSyncLifecycle(createDashboardLink(familyHistoryDashboardMeta), options);
+export const labourDeliveryLink = getSyncLifecycle(createDashboardLink(labourDeliveryDashboardMeta), options);
 // Views
 export const mchClinicalView = getSyncLifecycle(MaternalHealthList, options);
 export const defaulterTracing = getSyncLifecycle(DefaulterTracing, options);
@@ -40,7 +43,7 @@ export const familyHistory = getSyncLifecycle(FamilyHistory, options);
 export const htsClinicalView = getSyncLifecycle(HivTestingEncountersList, options);
 //export const clinicalEncounter = getSyncLifecycle(ClinicalEncounter, options);
 export const inpatientView = getSyncLifecycle(InPatientView, options);
-
+export const labourDelivery = getSyncLifecycle(Partograph, options);
 export function startupApp() {
   defineConfigSchema(moduleName, configSchema);
 }

@@ -82,22 +82,40 @@ const LabourDeliveryList: React.FC<LabourDeliveryListProps> = ({ patientUuid }) 
   );
 
   return (
-    <EncounterList
-      patientUuid={patientUuid}
-      encounterType={LNDEncounterTypeUUID}
-      formList={[{ name: 'Labour & Delivery Form' }]}
-      columns={columns}
-      description={headerTitle}
-      headerTitle={headerTitle}
-      launchOptions={{
-        displayText: t('add', 'Add'),
-        moduleName: 'MCH Clinical View',
-      }}
-      filter={(encounter) => {
-        return encounter.form.uuid == LNDEncounterFormUUID;
-      }}
-      formConceptMap={labourAndDeliveryConceptMap}
-    />
+    <>
+      <EncounterList
+        patientUuid={patientUuid}
+        encounterType={LNDEncounterTypeUUID}
+        formList={[{ name: 'Labour & Delivery Form' }]}
+        columns={columns}
+        description={headerTitle}
+        headerTitle={headerTitle}
+        launchOptions={{
+          displayText: t('add', 'Add'),
+          moduleName: 'MCH Clinical View',
+        }}
+        filter={(encounter) => {
+          return encounter.form.uuid == LNDEncounterFormUUID;
+        }}
+        formConceptMap={labourAndDeliveryConceptMap}
+      />
+      <EncounterList
+        patientUuid={patientUuid}
+        encounterType={LNDEncounterTypeUUID}
+        formList={[{ name: 'Labour & Delivery Form' }]}
+        columns={columns}
+        description={headerTitle}
+        headerTitle={headerTitle}
+        launchOptions={{
+          displayText: t('add', 'Add'),
+          moduleName: 'MCH Clinical View',
+        }}
+        filter={(encounter) => {
+          return encounter.form.uuid == LNDEncounterFormUUID;
+        }}
+        formConceptMap={labourAndDeliveryConceptMap}
+      />
+    </>
   );
 };
 

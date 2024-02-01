@@ -110,6 +110,26 @@
         "path": "family-history",
         "layoutMode": "anchored"
       }
+    },
+    {
+      "name": "labour-delivery",
+      "slot": "patient-chart-labour-delivery-slot",
+      "component": "labourDelivery",
+      "order": 4,
+      "online": true,
+      "offline": false
+    },
+    {
+      "name": "labour-delivery-link",
+      "component": "labourDeliveryLink",
+      "slot": "patient-clinical-view-slot",
+      "meta": {
+        "columns": 1,
+        "columnSpan": 1,
+        "slot": "patient-chart-labour-delivery-slot",
+        "path": "labour-delivery",
+        "layoutMode": "anchored"
+      }
     }
   ]
 }

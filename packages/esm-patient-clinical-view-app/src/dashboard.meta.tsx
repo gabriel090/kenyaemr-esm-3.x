@@ -47,3 +47,12 @@ export const familyHistoryDashboardMeta = {
   moduleName: '@kenyaemr/esm-patient-clinical-view-app',
   config: {},
 };
+
+export const labourDeliveryDashboardMeta = {
+  slot: 'patient-chart-labour-delivery-slot',
+  columns: 1,
+  title: 'Labour and Delivery',
+  path: 'labour-delivery',
+  moduleName: '@kenyaemr/esm-patient-clinical-view-app',
+  config: {},
+};
