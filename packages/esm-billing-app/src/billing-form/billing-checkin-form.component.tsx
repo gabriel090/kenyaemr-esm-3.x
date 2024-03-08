@@ -1,5 +1,5 @@
 import React, { useCallback, useMemo, useState } from 'react';
-import { InlineLoading, InlineNotification, Layer, Search, Tile } from '@carbon/react';
+import { InlineLoading, InlineNotification, Layer, Search, Tile, Tag } from '@carbon/react';
 import { useTranslation } from 'react-i18next';
 import { useCashPoint, useBillableItems, createPatientBill } from './billing-form.resource';
 import { showSnackbar, useConfig } from '@openmrs/esm-framework';
@@ -23,8 +23,8 @@ const BillingCheckInForm: React.FC<BillingCheckInFormProps> = ({ patientUuid, se
   const { cashPoints, isLoading: isLoadingCashPoints, error: cashError } = useCashPoint();
   const { lineItems, isLoading: isLoadingLineItems, error: lineError, setSearchTerm } = useBillableItems();
   const [showItems, setShowItems] = useState(false);
-  const [searchString, setSearchString] = useState('');
-  const [selectedItem, setSelectedItem] = useState(null);
+  const [searchString] = useState('');
+  const [selectedItems, setSelectedItems] = useState([]);
   const searchResults = useMemo(() => {
     if (lineItems !== undefined && lineItems.length > 0) {
       if (searchString && searchString.trim() !== '') {
@@ -138,6 +138,7 @@ const BillingCheckInForm: React.FC<BillingCheckInFormProps> = ({ patientUuid, se
     <>
       <VisitAttributesForm setAttributes={setAttributes} setPaymentMethod={setPaymentMethod} />
       <section className={styles.sectionContainer}>
+        {selectedItems?.map((item) => <Tag>{item.name}</Tag> ?? '-')}
         <div className={styles.sectionTitle}>{t('billing', 'Billing')}</div>
         <div className={styles.sectionField}>
           <Layer>
@@ -160,21 +161,22 @@ const BillingCheckInForm: React.FC<BillingCheckInFormProps> = ({ patientUuid, se
               </div>
             ) : (
               showItems && (
-                <div>
+                <ul className={styles.billableList}>
                   {lineItems.map((item) => (
-                    <div
+                    <li
                       key={item.uuid}
-                      role="button"
+                      role="menuitem"
                       tabIndex={0}
+                      className={styles.billService}
                       onClick={() => {
                         handleBillingService(item);
-                        setSelectedItem(item);
-                      }}
-                      style={{ backgroundColor: selectedItem === item ? 'GrayText' : 'transparent' }}>
-                      {item.name} {setServicePrice(item.servicePrices)}
-                    </div>
+                        setSelectedItems((prevItems) => [...prevItems, item]);
+                        setShowItems((prevState) => !prevState);
+                      }}>
+                      {item.name}
+                    </li>
                   ))}
-                </div>
+                </ul>
               )
             )}
           </Layer>
